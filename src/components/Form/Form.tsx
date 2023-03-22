@@ -5,14 +5,22 @@ export class Form extends Component {
     number: '',
   };
 
-  changeHandler = e => {
+  changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  submitHandler = e => {
+  submitHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const data = this.state;
+    this.clearForm();
     this.props.formSubmit(data);
+  };
+
+  clearForm = () => {
+    this.setState({
+      name: '',
+      number: '',
+    });
   };
   render() {
     return (
