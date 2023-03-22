@@ -50,13 +50,35 @@ export class Phonebook {
     return contact;
   }
 
+
+  getContactData() {
+    
+  }
+ 
+
   addContact(contact: IContact): void {
     this.setState((prevState: IContacts) => {
       prevState.contacts.push(contact);
     });
   }
 
-  render() {
-    return;
+  render({ children }) {
+    return (
+      <div>
+        <button type="button" onClick={this.addContact}>
+          Add
+        </button>
+        <button type="button" onClick={this.addContact}>
+          Create
+        </button>
+        <button type="button" onClick={this.findContacts}>
+          Find
+        </button>
+        <div>
+          <h2>Contacts</h2>
+          <div>{children}</div>
+        </div>
+      </div>
+    );
   }
 }
