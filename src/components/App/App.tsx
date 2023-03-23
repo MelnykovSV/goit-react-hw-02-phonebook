@@ -1,12 +1,15 @@
 import { Component } from 'react';
 import { Form } from '../Form/Form';
+import { ContactsList } from '../ContactsList/Contactslist';
+import { Contact } from '../Contact/Contact';
 
 interface IContact {
   name: string;
   number: string;
+  id: string;
 }
 interface IState {
-  contacts: object[];
+  contacts: IContact[];
 }
 
 export class App extends Component {
@@ -14,7 +17,7 @@ export class App extends Component {
     contacts: [],
   };
 
-  formSubmitHandler = (data: IContact) => {
+  formSubmitHandler = (data: IContact): void => {
     const copy: IState = this.state;
     copy.contacts.push(data);
     this.setState(copy);
@@ -35,6 +38,11 @@ export class App extends Component {
       >
         Phonebook
         <Form formSubmit={this.formSubmitHandler}></Form>
+        <ContactsList>
+          {this.state.contacts.map((item: IContact) => (
+            <Contact name={item.name} number={item.number} key={item.id} />
+          ))}
+        </ContactsList>
       </div>
     );
   }

@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
-export class Form extends Component {
+const shortid = require('shortid');
+
+interface IFormProps {
+  formSubmit: (data: IContact) => void;
+}
+
+interface IContact {
+  name: string;
+  number: string;
+  id?: string;
+}
+
+export class Form extends Component<IFormProps> {
   state = {
     name: '',
     number: '',
@@ -9,10 +21,12 @@ export class Form extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  submitHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = this.state;
+    const data: IContact = this.state;
     this.clearForm();
+    data.id = shortid.generate();
+
     this.props.formSubmit(data);
   };
 
