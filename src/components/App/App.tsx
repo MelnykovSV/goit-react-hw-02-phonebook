@@ -21,7 +21,14 @@ export class App extends Component {
     const copy: IState = this.state;
     copy.contacts.push(data);
     this.setState(copy);
-    console.log(this.state);
+  };
+
+  contactDeleteHandler = (id: string): void => {
+    const data = this.state;
+    const result = data.contacts.filter(item => {
+      return item.id !== id;
+    });
+    this.setState({ contacts: result });
   };
 
   render() {
@@ -40,7 +47,13 @@ export class App extends Component {
         <Form formSubmit={this.formSubmitHandler}></Form>
         <ContactsList>
           {this.state.contacts.map((item: IContact) => (
-            <Contact name={item.name} number={item.number} key={item.id} />
+            <Contact
+              name={item.name}
+              number={item.number}
+              id={item.id}
+              key={item.id}
+              deleteHandler={this.contactDeleteHandler}
+            />
           ))}
         </ContactsList>
       </div>

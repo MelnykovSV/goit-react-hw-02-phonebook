@@ -3,16 +3,25 @@ interface IContactProps {
   name: string;
   number: string;
   id: string;
+  deleteHandler: (id: string) => void;
 }
 
 export class Contact extends Component<IContactProps> {
+  state = {
+    id: this.props.id,
+  };
+  handleDeleteClick = () => {
+    this.props.deleteHandler(this.state.id);
+  };
   render() {
     return (
       <li>
         <p>
-          {this.props.name}:{this.props.number}
+          {this.props.name}: {this.props.number}
         </p>
-        <button type="button">Delete</button>
+        <button type="button" onClick={this.handleDeleteClick}>
+          Delete
+        </button>
       </li>
     );
   }
