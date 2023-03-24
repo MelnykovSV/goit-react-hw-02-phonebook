@@ -15,12 +15,16 @@ interface IState {
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
   };
 
   formSubmitHandler = (data: IContact): void => {
     const copy: IState = this.state;
-    copy.contacts.push(data);
-    this.setState(copy);
+    if (!copy.contacts.some(item => item.name === data.name)) {
+      this.setState({ contacts: [data, ...copy.contacts] });
+    } else {
+      alert(`${data.name} is already in contacts.`);
+    }
   };
 
   contactDeleteHandler = (id: string): void => {
@@ -30,8 +34,17 @@ export class App extends Component {
     });
     this.setState({ contacts: result });
   };
+  contactsFilter = (value: string): void => {
+    this.setState({ filter: value });
+  };
 
   render() {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    const filteredContacts = this.state.contacts.filter(
+      (item: IContact): boolean => {
+        return item.name.includes(normalizedFilter);
+      }
+    );
     return (
       <div
         style={{
@@ -45,8 +58,8 @@ export class App extends Component {
       >
         Phonebook
         <Form formSubmit={this.formSubmitHandler}></Form>
-        <ContactsList>
-          {this.state.contacts.map((item: IContact) => (
+        <ContactsList contactsFilter={this.contactsFilter}>
+          {filteredContacts.map((item: IContact) => (
             <Contact
               name={item.name}
               number={item.number}
