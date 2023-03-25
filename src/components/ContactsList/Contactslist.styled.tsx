@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { colors } from '../../constants';
 
 export const Container = styled.div`
   width: 100%;
@@ -31,10 +32,10 @@ export const Container = styled.div`
     font-size: 18px;
     display: block;
     padding: 21px 25px;
-    border: 1px solid rgba(219, 227, 255, 0.8);
+    border: 1px solid ${colors.text.primary};
     width: 100%;
-    background-color: #2a2e70;
-    color: #dbe3ff;
+    background-color: ${colors.bg.primary};
+    color: ${colors.text.primary};
     border-radius: 8%/50%;
   }
 `;
@@ -45,5 +46,6 @@ export const StyledSearchIcon = styled(BiSearchAlt2)`
   height: 40px;
   right: 20px;
   top: 50%;
+  color: ${colors.text.primary};
   transform: translateY(-50%);
 `;

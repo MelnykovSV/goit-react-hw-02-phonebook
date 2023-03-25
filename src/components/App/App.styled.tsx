@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
+import { colors } from '../../constants';
 
 export const Container = styled.div`
-  /* box-sizing: border-box; */
   width: min(400px, 100%);
-  background-color: #2a2e70;
+  background-color: ${colors.bg.primary};
   height: 100vh;
 
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',

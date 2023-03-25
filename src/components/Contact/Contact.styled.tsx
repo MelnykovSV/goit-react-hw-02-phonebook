@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
+import { colors, animations } from '../../constants';
 
 export const Container = styled.li`
-  background-color: #353a8e;
+  background-color: ${colors.bg.contact};
   width: 100%;
   border-radius: 15px;
   display: flex;
   padding: 15px 25px;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 350ms linear;
+  transition: background-color ${animations.time} ${animations.cubic};
   p {
     margin: 0;
   }
@@ -17,8 +18,8 @@ export const Container = styled.li`
     height: 43px;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 350ms linear;
-    background-color: #353a8e;
+    transition: opacity ${animations.time} ${animations.cubic};
+    background-color: ${colors.button.contactButtonPrimary};
     border: 1px solid white;
     border-radius: 50%;
     display: flex;
@@ -27,12 +28,12 @@ export const Container = styled.li`
   }
 
   &:hover {
-    background-color: #353a8e;
+    background-color: ${colors.bg.contact};
     button {
       opacity: 1;
-      transition: background-color 350ms linear;
+      transition: background-color ${animations.time} ${animations.cubic};
       &:hover {
-        background-color: #2a0096;
+        background-color: ${colors.button.contactButtonHover};
       }
     }
   }
