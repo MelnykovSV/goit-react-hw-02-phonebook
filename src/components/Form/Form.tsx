@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from './Form.styled';
 const shortid = require('shortid');
 
 interface IFormProps {
@@ -40,7 +41,7 @@ export class Form extends Component<IFormProps> {
   };
   render() {
     return (
-      <form onSubmit={this.submitHandler} className={this.props.className}>
+      <Container onSubmit={this.submitHandler}>
         <label>
           Name
           <input
@@ -50,6 +51,7 @@ export class Form extends Component<IFormProps> {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             value={this.state.name}
             onChange={this.changeHandler}
+            placeholder="Name your contact"
             required
           />
         </label>
@@ -63,11 +65,12 @@ export class Form extends Component<IFormProps> {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             value={this.state.number}
             onChange={this.changeHandler}
+            placeholder="Paste or type the number"
             required
           />
         </label>
         <button type="submit">Add contact</button>
-      </form>
+      </Container>
     );
   }
 }

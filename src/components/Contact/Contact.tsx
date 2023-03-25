@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Container } from './Contact.styled';
+import { BsTrash3 } from 'react-icons/bs';
+
 interface IContactProps {
   name: string;
   number: string;
@@ -15,14 +18,16 @@ export class Contact extends Component<IContactProps> {
   };
   render(): JSX.Element {
     return (
-      <li className={this.props.className}>
-        <p>
-          {this.props.name}: {this.props.number}
-        </p>
+      <Container>
+        <div>
+          <p>{this.props.name}</p>
+          <p>{this.props.number}</p>
+        </div>
+
         <button type="button" onClick={this.handleDeleteClick}>
-          Delete
+          <BsTrash3 size="16px" color="white" />
         </button>
-      </li>
+      </Container>
     );
   }
 }

@@ -2,8 +2,11 @@ import { Component } from 'react';
 import { Form } from '../Form/Form';
 import { ContactsList } from '../ContactsList/Contactslist';
 import { Contact } from '../Contact/Contact';
+import { ModernNormalize } from 'emotion-modern-normalize';
 
-import css from './../PhoneBook.module.scss';
+import { Container } from './App.styled';
+
+// import css from './../PhoneBook.module.scss';
 
 export interface IContact {
   name: string;
@@ -44,9 +47,6 @@ export class App extends Component {
   };
 
   render() {
-    const className: string = css.form;
-
-    console.log(css);
     const normalizedFilter = this.state.filter.toLowerCase();
     const filteredContacts = this.state.contacts.filter(
       (item: IContact): boolean => {
@@ -54,21 +54,14 @@ export class App extends Component {
       }
     );
     return (
-      <div
-        style={{
-          height: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        Phonebook
-        <Form className={className} formSubmit={this.formSubmitHandler}></Form>
+      <Container>
+        <ModernNormalize />
+        <h2>Phonebook</h2>
+
+        <Form formSubmit={this.formSubmitHandler}></Form>
         <ContactsList contactsFilter={this.contactsFilter}>
           {filteredContacts.map((item: IContact) => (
             <Contact
-              className={css.contact}
               name={item.name}
               number={item.number}
               id={item.id}
@@ -77,7 +70,7 @@ export class App extends Component {
             />
           ))}
         </ContactsList>
-      </div>
+      </Container>
     );
   }
 }
