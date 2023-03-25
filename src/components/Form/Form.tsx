@@ -8,13 +8,14 @@ interface IFormProps {
 interface IContact {
   name: string;
   number: string;
-  id?: string;
+  id: string;
 }
 
 export class Form extends Component<IFormProps> {
   state = {
     name: '',
     number: '',
+    id: '',
   };
 
   changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,11 +35,12 @@ export class Form extends Component<IFormProps> {
     this.setState({
       name: '',
       number: '',
+      id: '',
     });
   };
   render() {
     return (
-      <form onSubmit={this.submitHandler}>
+      <form onSubmit={this.submitHandler} className={this.props.className}>
         <label>
           Name
           <input

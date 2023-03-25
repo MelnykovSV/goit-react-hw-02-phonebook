@@ -13,9 +13,9 @@ export class Contact extends Component<IContactProps> {
   handleDeleteClick = () => {
     this.props.deleteHandler(this.state.id);
   };
-  render() {
+  render(): JSX.Element {
     return (
-      <li>
+      <li className={this.props.className}>
         <p>
           {this.props.name}: {this.props.number}
         </p>

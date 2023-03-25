@@ -3,7 +3,9 @@ import { Form } from '../Form/Form';
 import { ContactsList } from '../ContactsList/Contactslist';
 import { Contact } from '../Contact/Contact';
 
-interface IContact {
+import css from './../PhoneBook.module.scss';
+
+export interface IContact {
   name: string;
   number: string;
   id: string;
@@ -20,7 +22,10 @@ export class App extends Component {
 
   formSubmitHandler = (data: IContact): void => {
     const copy: IState = this.state;
-    if (!copy.contacts.some(item => item.name === data.name)) {
+    const normalizedName = data.name.toLowerCase();
+    if (
+      !copy.contacts.some(item => item.name.toLowerCase() === normalizedName)
+    ) {
       this.setState({ contacts: [data, ...copy.contacts] });
     } else {
       alert(`${data.name} is already in contacts.`);
@@ -29,7 +34,7 @@ export class App extends Component {
 
   contactDeleteHandler = (id: string): void => {
     const data = this.state;
-    const result = data.contacts.filter(item => {
+    const result = data.contacts.filter((item: IContact): boolean => {
       return item.id !== id;
     });
     this.setState({ contacts: result });
@@ -39,17 +44,19 @@ export class App extends Component {
   };
 
   render() {
+    const className: string = css.form;
+
+    console.log(css);
     const normalizedFilter = this.state.filter.toLowerCase();
     const filteredContacts = this.state.contacts.filter(
       (item: IContact): boolean => {
-        return item.name.includes(normalizedFilter);
+        return item.name.toLowerCase().includes(normalizedFilter);
       }
     );
     return (
       <div
         style={{
           height: '100vh',
-          display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
@@ -57,10 +64,11 @@ export class App extends Component {
         }}
       >
         Phonebook
-        <Form formSubmit={this.formSubmitHandler}></Form>
+        <Form className={className} formSubmit={this.formSubmitHandler}></Form>
         <ContactsList contactsFilter={this.contactsFilter}>
           {filteredContacts.map((item: IContact) => (
             <Contact
+              className={css.contact}
               name={item.name}
               number={item.number}
               id={item.id}
