@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from './Contactslist.styled';
-import { BiSearchAlt2 } from 'react-icons/bi';
+// import { BiSearchAlt2 } from 'react-icons/bi';
 import { StyledSearchIcon } from './Contactslist.styled';
 const shortid = require('shortid');
 
