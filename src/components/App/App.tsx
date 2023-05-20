@@ -6,16 +6,7 @@ import { ModernNormalize } from 'emotion-modern-normalize';
 
 import { Container } from './App.styled';
 
-// import css from './../PhoneBook.module.scss';
-
-export interface IContact {
-  name: string;
-  number: string;
-  id: string;
-}
-interface IState {
-  contacts: IContact[];
-}
+import { IContact, IState } from '../../interfaces';
 
 export class App extends Component {
   state = {
@@ -42,6 +33,7 @@ export class App extends Component {
     });
     this.setState({ contacts: result });
   };
+
   contactsFilter = (value: string): void => {
     this.setState({ filter: value });
   };
@@ -53,6 +45,7 @@ export class App extends Component {
         return item.name.toLowerCase().includes(normalizedFilter);
       }
     );
+
     return (
       <Container>
         <ModernNormalize />

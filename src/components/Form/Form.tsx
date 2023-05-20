@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { Container } from './Form.styled';
-const shortid = require('shortid');
 
-interface IFormProps {
-  formSubmit: (data: IContact) => void;
-}
-
-interface IContact {
-  name: string;
-  number: string;
-  id: string;
-}
+import { IFormProps, IContact } from '../../interfaces';
+import shortid from 'shortid';
 
 export class Form extends Component<IFormProps> {
   state = {
