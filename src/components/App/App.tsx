@@ -1,26 +1,26 @@
 import { Component } from 'react';
 import { Form } from '../Form/Form';
 import { ContactsList } from '../ContactsList/Contactslist';
-import { Contact } from '../Contact/Contact';
 import { ModernNormalize } from 'emotion-modern-normalize';
-
 import { Container } from './App.styled';
 
 import { IContact, IState } from '../../interfaces';
 
-export class App extends Component {
-  state = {
+export class App extends Component<{}, IState> {
+  state: IState = {
     contacts: [],
     filter: '',
   };
 
   formSubmitHandler = (data: IContact): void => {
-    const copy: IState = this.state;
     const normalizedName = data.name.toLowerCase();
+
     if (
-      !copy.contacts.some(item => item.name.toLowerCase() === normalizedName)
+      !this.state.contacts.some(
+        item => item.name.toLowerCase() === normalizedName
+      )
     ) {
-      this.setState({ contacts: [data, ...copy.contacts] });
+      this.setState({ contacts: [data, ...this.state.contacts] });
     } else {
       alert(`${data.name} is already in contacts.`);
     }
@@ -52,17 +52,11 @@ export class App extends Component {
         <h2>Phonebook</h2>
 
         <Form formSubmit={this.formSubmitHandler}></Form>
-        <ContactsList contactsFilter={this.contactsFilter}>
-          {filteredContacts.map((item: IContact) => (
-            <Contact
-              name={item.name}
-              number={item.number}
-              id={item.id}
-              key={item.id}
-              deleteHandler={this.contactDeleteHandler}
-            />
-          ))}
-        </ContactsList>
+        <ContactsList
+          contactsFilter={this.contactsFilter}
+          filteredContacts={filteredContacts}
+          contactDeleteHandler={this.contactDeleteHandler}
+        />
       </Container>
     );
   }

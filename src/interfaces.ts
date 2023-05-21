@@ -5,6 +5,7 @@ export interface IContact {
 }
 export interface IState {
   contacts: IContact[];
+  filter: string;
 }
 
 export interface IContactProps {
@@ -15,8 +16,9 @@ export interface IContactProps {
 }
 
 export interface IContactsListProps {
-  children: JSX.Element[];
   contactsFilter: (value: string) => void;
+  filteredContacts: IContact[];
+  contactDeleteHandler: (id: string) => void;
 }
 
 export interface IFormProps {
