@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from './Contactslist.styled';
-// import { BiSearchAlt2 } from 'react-icons/bi';
 import { StyledSearchIcon } from './Contactslist.styled';
 import { IContactsListProps } from '../../interfaces';
 import shortid from 'shortid';
