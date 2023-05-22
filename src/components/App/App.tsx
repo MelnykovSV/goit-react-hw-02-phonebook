@@ -29,17 +29,24 @@ export class App extends Component<{}, IState> {
   //   }
   // };
 
-  formSubmitHandler = e => {
+  formSubmitHandler = (e: React.SyntheticEvent) => {
+    const target = e.target as typeof e.target & {
+      elements: {
+        name: { value: string };
+        number: { value: string };
+      };
+      reset: () => void;
+    };
     e.preventDefault();
-    const name = e.target.elements.name.value.toLowerCase();
-    const number = e.target.elements.number.value;
+    const name = target.elements.name.value.toLowerCase();
+    const number = target.elements.number.value;
     const id = shortid();
 
     if (!this.state.contacts.some(item => item.name.toLowerCase() === name)) {
       this.setState({
         contacts: [{ name, number, id }, ...this.state.contacts],
       });
-      e.target.reset();
+      target.reset();
     } else {
       alert(`${name} is already in contacts.`);
     }
@@ -74,7 +81,6 @@ export class App extends Component<{}, IState> {
         <h2>Contacts</h2>
         <Filter contactsFilter={this.contactsFilter} />
         <ContactsList
-          // contactsFilter={this.contactsFilter}
           filteredContacts={filteredContacts}
           contactDeleteHandler={this.contactDeleteHandler}
         />

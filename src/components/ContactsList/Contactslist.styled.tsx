@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
-import { BiSearchAlt2 } from 'react-icons/bi';
+// import { BiSearchAlt2 } from 'react-icons/bi';
 import { colors } from '../../constants';
 
 export const Container = styled.div`
   width: 100%;
-  input {
+  /* input {
     width: 100%;
-  }
-  div {
+  } */
+  /* div {
     position: relative;
-  }
+  } */
   h2 {
     margin-bottom: 10px;
   }
@@ -23,7 +23,7 @@ export const Container = styled.div`
     max-height: 334px;
     overflow-y: auto;
   }
-  label {
+  /* label {
     display: block;
     margin-bottom: 10px;
     font-size: 25px;
@@ -37,15 +37,15 @@ export const Container = styled.div`
     background-color: ${colors.bg.primary};
     color: ${colors.text.primary};
     border-radius: 8%/50%;
-  }
+  } */
 `;
 
-export const StyledSearchIcon = styled(BiSearchAlt2)`
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  right: 20px;
-  top: 50%;
-  color: ${colors.text.primary};
-  transform: translateY(-50%);
-`;
+// export const StyledSearchIcon = styled(BiSearchAlt2)`
+//   position: absolute;
+//   width: 40px;
+//   height: 40px;
+//   right: 20px;
+//   top: 50%;
+//   color: ${colors.text.primary};
+//   transform: translateY(-50%);
+// `;

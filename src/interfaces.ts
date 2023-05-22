@@ -28,5 +28,5 @@ export interface IFilterProps {
 }
 
 export interface IFormProps {
-  formSubmit: (data: IContact) => void;
+  formSubmit: (e: React.SyntheticEvent) => void;
 }

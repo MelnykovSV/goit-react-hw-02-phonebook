@@ -3,6 +3,9 @@ import { BiSearchAlt2 } from 'react-icons/bi';
 import { colors } from '../../constants';
 
 export const Container = styled.div`
+  div {
+    position: relative;
+  }
   label {
     display: block;
     margin-bottom: 10px;

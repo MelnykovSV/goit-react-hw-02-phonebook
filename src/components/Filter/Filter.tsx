@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './Filter.styled';
-import { StyledSearchIcon } from '../ContactsList/Contactslist.styled';
+import { StyledSearchIcon } from './Filter.styled';
 // import shortid from 'shortid';
 import { IFilterProps } from '../../interfaces';
 
