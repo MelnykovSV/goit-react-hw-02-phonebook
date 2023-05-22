@@ -4,6 +4,8 @@ import { ContactsList } from '../ContactsList/Contactslist';
 import { ModernNormalize } from 'emotion-modern-normalize';
 import { Container } from './App.styled';
 
+import shortid from 'shortid';
+
 import { IContact, IState } from '../../interfaces';
 
 export class App extends Component<{}, IState> {
@@ -23,6 +25,21 @@ export class App extends Component<{}, IState> {
       this.setState({ contacts: [data, ...this.state.contacts] });
     } else {
       alert(`${data.name} is already in contacts.`);
+    }
+  };
+
+  formSubmitHandler1 = e => {
+    e.preventDefault();
+    const name = e.target.elements.name.toLowerCase();
+    const number = e.target.elements.number;
+    const id = shortid();
+
+    if (!this.state.contacts.some(item => item.name.toLowerCase() === name)) {
+      this.setState({
+        contacts: [{ name, number, id }, ...this.state.contacts],
+      });
+    } else {
+      alert(`${name} is already in contacts.`);
     }
   };
 
