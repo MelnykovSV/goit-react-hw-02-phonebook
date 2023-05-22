@@ -1,16 +1,16 @@
 import React from 'react';
 import { Container } from './Contactslist.styled';
-import { StyledSearchIcon } from './Contactslist.styled';
+// import { StyledSearchIcon } from './Contactslist.styled';
 import { IContactsListProps } from '../../interfaces';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import { IContact } from '../../interfaces';
 import { Contact } from '../Contact/Contact';
 
 export class ContactsList extends React.Component<IContactsListProps> {
-  formId = shortid.generate();
-  searchHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.props.contactsFilter(e.target.value);
-  };
+  // formId = shortid.generate();
+  // searchHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  //   this.props.contactsFilter(e.target.value);
+  // };
 
   render() {
     return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container } from './Filter.styled';
 import { StyledSearchIcon } from '../ContactsList/Contactslist.styled';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import { IFilterProps } from '../../interfaces';
 
 export class Filter extends React.Component<IFilterProps> {
-  formId = shortid.generate();
+  //   formId = shortid.generate();
   searchHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.props.contactsFilter(e.target.value);
   };
@@ -13,12 +13,12 @@ export class Filter extends React.Component<IFilterProps> {
   render() {
     return (
       <Container>
-        <label htmlFor={this.formId}>Find contacts by name</label>
+        <label htmlFor="search-input">Find contacts by name</label>
         <div>
           <input
             type="text"
             name=""
-            id={this.formId}
+            id="search-input"
             onChange={this.searchHandler}
             placeholder="Type to find..."
           />
