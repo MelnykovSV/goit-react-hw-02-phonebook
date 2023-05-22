@@ -14,25 +14,30 @@ export class App extends Component<{}, IState> {
     filter: '',
   };
 
-  formSubmitHandler = (data: IContact): void => {
-    const normalizedName = data.name.toLowerCase();
+  // formSubmitHandler1 = (data: IContact): void => {
+  //   const normalizedName = data.name.toLowerCase();
 
-    if (
-      !this.state.contacts.some(
-        item => item.name.toLowerCase() === normalizedName
-      )
-    ) {
-      this.setState({ contacts: [data, ...this.state.contacts] });
-    } else {
-      alert(`${data.name} is already in contacts.`);
-    }
-  };
+  //   if (
+  //     !this.state.contacts.some(
+  //       item => item.name.toLowerCase() === normalizedName
+  //     )
+  //   ) {
+  //     this.setState({ contacts: [data, ...this.state.contacts] });
+  //   } else {
+  //     alert(`${data.name} is already in contacts.`);
+  //   }
+  // };
 
-  formSubmitHandler1 = e => {
+  formSubmitHandler = e => {
     e.preventDefault();
-    const name = e.target.elements.name.toLowerCase();
-    const number = e.target.elements.number;
+    console.log(e.target.elements.name);
+    const name = e.target.elements.name.value.toLowerCase();
+    const number = e.target.elements.number.value;
     const id = shortid();
+
+    console.log(name);
+    console.log(number);
+    console.log(id);
 
     if (!this.state.contacts.some(item => item.name.toLowerCase() === name)) {
       this.setState({
