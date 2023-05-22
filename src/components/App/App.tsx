@@ -3,6 +3,7 @@ import { Form } from '../Form/Form';
 import { ContactsList } from '../ContactsList/Contactslist';
 import { ModernNormalize } from 'emotion-modern-normalize';
 import { Container } from './App.styled';
+import { Filter } from '../Filter/Filter';
 
 import shortid from 'shortid';
 
@@ -30,19 +31,15 @@ export class App extends Component<{}, IState> {
 
   formSubmitHandler = e => {
     e.preventDefault();
-    console.log(e.target.elements.name);
     const name = e.target.elements.name.value.toLowerCase();
     const number = e.target.elements.number.value;
     const id = shortid();
-
-    console.log(name);
-    console.log(number);
-    console.log(id);
 
     if (!this.state.contacts.some(item => item.name.toLowerCase() === name)) {
       this.setState({
         contacts: [{ name, number, id }, ...this.state.contacts],
       });
+      e.target.reset();
     } else {
       alert(`${name} is already in contacts.`);
     }
@@ -74,8 +71,10 @@ export class App extends Component<{}, IState> {
         <h2>Phonebook</h2>
 
         <Form formSubmit={this.formSubmitHandler}></Form>
+        <h2>Contacts</h2>
+        <Filter contactsFilter={this.contactsFilter} />
         <ContactsList
-          contactsFilter={this.contactsFilter}
+          // contactsFilter={this.contactsFilter}
           filteredContacts={filteredContacts}
           contactDeleteHandler={this.contactDeleteHandler}
         />

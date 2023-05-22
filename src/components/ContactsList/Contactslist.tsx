@@ -15,9 +15,7 @@ export class ContactsList extends React.Component<IContactsListProps> {
   render() {
     return (
       <Container>
-        <h2>Contacts</h2>
-
-        <label htmlFor={this.formId}>Find contacts by name</label>
+        {/* <label htmlFor={this.formId}>Find contacts by name</label>
         <div>
           <input
             type="text"
@@ -27,7 +25,7 @@ export class ContactsList extends React.Component<IContactsListProps> {
             placeholder="Type to find..."
           />
           <StyledSearchIcon />
-        </div>
+        </div> */}
 
         <ul>
           {this.props.filteredContacts.map((item: IContact) => (
