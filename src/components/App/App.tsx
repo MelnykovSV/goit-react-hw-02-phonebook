@@ -6,7 +6,6 @@ import { Container } from './App.styled';
 import { Filter } from '../Filter/Filter';
 
 import { IContact, IState } from '../../interfaces';
-import shortid from 'shortid';
 
 export class App extends Component<{}, IState> {
   state: IState = {
@@ -14,26 +13,17 @@ export class App extends Component<{}, IState> {
     filter: '',
   };
 
-  formSubmitHandler = (e: React.SyntheticEvent) => {
-    const target = e.target as typeof e.target & {
-      elements: {
-        name: { value: string };
-        number: { value: string };
-      };
-      reset: () => void;
-    };
-    e.preventDefault();
-    const name = target.elements.name.value.toLowerCase();
-    const number = target.elements.number.value;
-    const id = shortid();
+  formSubmitHandler = (data: IContact): void => {
+    const normalizedName = data.name.toLowerCase();
 
-    if (!this.state.contacts.some(item => item.name.toLowerCase() === name)) {
-      this.setState({
-        contacts: [{ name, number, id }, ...this.state.contacts],
-      });
-      target.reset();
+    if (
+      !this.state.contacts.some(
+        item => item.name.toLowerCase() === normalizedName
+      )
+    ) {
+      this.setState({ contacts: [data, ...this.state.contacts] });
     } else {
-      alert(`${name} is already in contacts.`);
+      alert(`${data.name} is already in contacts.`);
     }
   };
 
@@ -65,7 +55,6 @@ export class App extends Component<{}, IState> {
         <Form formSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter contactsFilter={this.contactsFilter} />
-
         <ContactsList
           filteredContacts={filteredContacts}
           contactDeleteHandler={this.contactDeleteHandler}
