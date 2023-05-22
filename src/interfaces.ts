@@ -20,8 +20,12 @@ export interface IContactsListProps {
   contactDeleteHandler: (id: string) => void;
 }
 
+export interface IFilterProps {
+  contactsFilter: (value: string) => void;
+}
+
 export interface IFormProps {
-  formSubmit: (data: IContact) => void;
+  formSubmit: (e: React.SyntheticEvent) => void;
 }
 export interface IFilterProps {
   contactsFilter: (value: string) => void;
