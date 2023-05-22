@@ -16,11 +16,13 @@ export interface IContactProps {
 }
 
 export interface IContactsListProps {
-  contactsFilter: (value: string) => void;
   filteredContacts: IContact[];
   contactDeleteHandler: (id: string) => void;
 }
 
 export interface IFormProps {
   formSubmit: (data: IContact) => void;
+}
+export interface IFilterProps {
+  contactsFilter: (value: string) => void;
 }

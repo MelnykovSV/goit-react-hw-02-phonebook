@@ -3,6 +3,7 @@ import { Form } from '../Form/Form';
 import { ContactsList } from '../ContactsList/Contactslist';
 import { ModernNormalize } from 'emotion-modern-normalize';
 import { Container } from './App.styled';
+import { Filter } from '../Filter/Filter';
 
 import { IContact, IState } from '../../interfaces';
 
@@ -51,9 +52,10 @@ export class App extends Component<{}, IState> {
         <ModernNormalize />
         <h2>Phonebook</h2>
 
-        <Form formSubmit={this.formSubmitHandler}></Form>
+        <Form formSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
+        <Filter contactsFilter={this.contactsFilter} />
         <ContactsList
-          contactsFilter={this.contactsFilter}
           filteredContacts={filteredContacts}
           contactDeleteHandler={this.contactDeleteHandler}
         />
