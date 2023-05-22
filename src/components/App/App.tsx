@@ -15,20 +15,6 @@ export class App extends Component<{}, IState> {
     filter: '',
   };
 
-  // formSubmitHandler1 = (data: IContact): void => {
-  //   const normalizedName = data.name.toLowerCase();
-
-  //   if (
-  //     !this.state.contacts.some(
-  //       item => item.name.toLowerCase() === normalizedName
-  //     )
-  //   ) {
-  //     this.setState({ contacts: [data, ...this.state.contacts] });
-  //   } else {
-  //     alert(`${data.name} is already in contacts.`);
-  //   }
-  // };
-
   formSubmitHandler = (e: React.SyntheticEvent) => {
     const target = e.target as typeof e.target & {
       elements: {
