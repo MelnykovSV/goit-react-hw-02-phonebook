@@ -4,22 +4,23 @@ import { IContactsListProps } from '../../interfaces';
 import { IContact } from '../../interfaces';
 import { Contact } from '../Contact/Contact';
 
-export class ContactsList extends React.Component<IContactsListProps> {
-  render() {
-    return (
-      <Container>
-        <ul>
-          {this.props.filteredContacts.map((item: IContact) => (
-            <Contact
-              name={item.name}
-              number={item.number}
-              id={item.id}
-              key={item.id}
-              deleteHandler={this.props.contactDeleteHandler}
-            />
-          ))}
-        </ul>
-      </Container>
-    );
-  }
-}
+export const ContactsList = ({
+  filteredContacts,
+  contactDeleteHandler,
+}: IContactsListProps) => {
+  return (
+    <Container>
+      <ul>
+        {filteredContacts.map((item: IContact) => (
+          <Contact
+            name={item.name}
+            number={item.number}
+            id={item.id}
+            key={item.id}
+            deleteHandler={contactDeleteHandler}
+          />
+        ))}
+      </ul>
+    </Container>
+  );
+};

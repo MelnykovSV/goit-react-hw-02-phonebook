@@ -63,7 +63,7 @@ export class App extends Component<{}, IState> {
         <ModernNormalize />
         <h2>Phonebook</h2>
 
-        <Form formSubmit={this.formSubmitHandler}></Form>
+        <Form formSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter contactsFilter={this.contactsFilter} />
         <ContactsList
