@@ -1,11 +1,9 @@
 import React from 'react';
 import { Container } from './Filter.styled';
 import { StyledSearchIcon } from './Filter.styled';
-// import shortid from 'shortid';
 import { IFilterProps } from '../../interfaces';
 
 export class Filter extends React.Component<IFilterProps> {
-  //   formId = shortid.generate();
   searchHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.props.contactsFilter(e.target.value);
   };
