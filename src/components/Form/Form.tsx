@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from './Form.styled';
 
-import { IFormProps, IContact } from '../../interfaces';
+import { IFormProps } from '../../interfaces';
 import shortid from 'shortid';
 
 export class Form extends Component<IFormProps> {
@@ -17,7 +17,7 @@ export class Form extends Component<IFormProps> {
 
   submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data: IContact = this.state;
+    const data = this.state;
     this.clearForm();
     data.id = shortid.generate();
 

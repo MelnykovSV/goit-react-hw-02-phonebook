@@ -41,11 +41,9 @@ export class App extends Component<{}, IState> {
 
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
-    const filteredContacts = this.state.contacts.filter(
-      (item: IContact): boolean => {
-        return item.name.toLowerCase().includes(normalizedFilter);
-      }
-    );
+    const filteredContacts = this.state.contacts.filter(item => {
+      return item.name.toLowerCase().includes(normalizedFilter);
+    });
 
     return (
       <Container>

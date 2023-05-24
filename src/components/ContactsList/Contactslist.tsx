@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container } from './Contactslist.styled';
 import { IContactsListProps } from '../../interfaces';
-import { IContact } from '../../interfaces';
 import { Contact } from '../Contact/Contact';
 
 export class ContactsList extends React.Component<IContactsListProps> {
@@ -9,7 +8,7 @@ export class ContactsList extends React.Component<IContactsListProps> {
     return (
       <Container>
         <ul>
-          {this.props.filteredContacts.map((item: IContact) => (
+          {this.props.filteredContacts.map(item => (
             <Contact
               name={item.name}
               number={item.number}
